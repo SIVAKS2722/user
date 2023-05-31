@@ -1,0 +1,123 @@
+<div class="container p-4">
+
+    <button type="button" class="btn btn-primary float-end mb-2" (click)="add_user(addUser)">Add User</button>
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 ">
+        <ng-container [matColumnDef]="column" *ngFor="let column of displayedColumns">
+            <th mat-header-cell *matHeaderCellDef class="text-capitalize">{{ column }}</th>
+            <td mat-cell *matCellDef="let emp, let i = index" (click)="edit(emp,update,i)">{{ emp[column] }}<mat-icon *ngIf="column == 'action'" class="deleteIcon" (click)="delete(emp)">delete</mat-icon></td>
+            <td></td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let emprow; columns: displayedColumns"></tr>
+      
+    </table>
+</div>
+
+<ng-template #addUser>
+    <h1 mat-dialog-title>Add user</h1>
+    <div mat-dialog-content>
+        <form [formGroup]="addUpdateUser" (ngSubmit)="submit()">
+            <div class="container">
+                <div class="row mb-3 align-items-center">
+                    <div class="label col-4 text-end">
+                        Name*:
+                    </div>
+                    <div class="col-8">
+                        <input  [ngClass]="{'isError': submitted && f['name'].errors}" type="text" placeholder="Name" formControlName="name">
+                    </div>
+                </div>
+                <div class="row mb-3 align-items-center">
+                    <div class="label col-4 text-end">
+                        Phone*:
+                    </div>
+                    <div class="col-8">
+                        <input  [ngClass]="{'isError': submitted && f['phone'].errors}" type="text" placeholder="Number" formControlName="phone">
+                    </div>
+                </div>
+                <div class="row mb-3 align-items-center">
+                    <div class="label col-4 text-end">
+                        Address*:
+                    </div>
+                    <div class="col-8">
+                        <input  [ngClass]="{'isError': submitted && f['address'].errors}" type="text" placeholder="Address" formControlName="address">
+                    </div>
+                </div>
+                <div class="row mb-3 align-items-center">
+                    <div class="label col-4 text-end">
+                        City*:
+                    </div>
+                    <div class="col-8">
+                        <input  [ngClass]="{'isError': submitted && f['city'].errors}" type="text" placeholder="City" formControlName="city">
+                    </div>
+                </div>
+                <div class="row mb-3 align-items-center">
+                    <div class="label col-4 text-end">
+                        State*:
+                    </div>
+                    <div class="col-8">
+                        <input  [ngClass]="{'isError': submitted && f['state'].errors}" type="text" placeholder="State" formControlName="state">
+                    </div>
+                </div>
+            </div>
+            <div mat-dialog-actions class="float-end me-5">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </form>
+    </div>
+    
+</ng-template>
+
+<ng-template #update>
+    <h1 mat-dialog-title>Update user</h1>
+    <div mat-dialog-content>
+        <form [formGroup]="updateUser" (ngSubmit)="submitEdit()">
+            <div class="container">
+                <div class="row mb-3 align-items-center">
+                    <div class="label col-4 text-end">
+                        Name*:
+                    </div>
+                    <div class="col-8">
+                        <input  [ngClass]="{'isError': submitted && f['name'].errors}" type="text" placeholder="Name" formControlName="name">
+                    </div>
+                </div>
+                <div class="row mb-3 align-items-center">
+                    <div class="label col-4 text-end">
+                        Phone*:
+                    </div>
+                    <div class="col-8">
+                        <input  [ngClass]="{'isError': submitted && f['phone'].errors}" type="text" placeholder="Number" formControlName="phone">
+                    </div>
+                </div>
+                <div class="row mb-3 align-items-center">
+                    <div class="label col-4 text-end">
+                        Address*:
+                    </div>
+                    <div class="col-8">
+                        <input  [ngClass]="{'isError': submitted && f['address'].errors}" type="text" placeholder="Address" formControlName="address">
+                    </div>
+                </div>
+                <div class="row mb-3 align-items-center">
+                    <div class="label col-4 text-end">
+                        City*:
+                    </div>
+                    <div class="col-8">
+                        <input  [ngClass]="{'isError': submitted && f['city'].errors}" type="text" placeholder="City" formControlName="city">
+                    </div>
+                </div>
+                <div class="row mb-3 align-items-center">
+                    <div class="label col-4 text-end">
+                        State*:
+                    </div>
+                    <div class="col-8">
+                        <input  [ngClass]="{'isError': submitted && f['state'].errors}" type="text" placeholder="State" formControlName="state">
+                    </div>
+                </div>
+            </div>
+            <div mat-dialog-actions class="float-end me-5">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </form>
+    </div>
+    
+</ng-template>

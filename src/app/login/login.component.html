@@ -1,0 +1,25 @@
+<div class="login-page">
+    <div class="row">
+        <div class="col-md-12">
+            <form [formGroup]="login" (ngSubmit)="loginClick()">
+                <div class="imgcontainer">
+                    <img src="https://media.geeksforgeeks.org/wp-content/cdn-uploads/20190710102234/download3.png"
+                        alt="Avatar" class="avatar">
+                </div>
+
+                <div class="container">
+                    <label><b>Username</b></label>
+                    <input type="email" placeholder="Email" name="email" formControlName="username"
+                        [ngClass]="{'isError': submitted && f['username'].errors}">
+
+                    <label><b>Password</b></label>
+                    <input type="password" placeholder="Password" name="psw" formControlName="password"
+                        [ngClass]="{'isError': submitted && f['password'].errors}">
+                    <div class="error" *ngIf="invalidCredential">Invalid Username and Password</div>
+                    <button type="submit">Login</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
